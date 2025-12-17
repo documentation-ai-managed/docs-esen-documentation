@@ -1,0 +1,121 @@
+---
+title: Configuring Your Space
+description: Learn how to customize and manage settings in your Esen documentation space for optimal organization.
+---
+
+## Overview
+
+Customize your Esen documentation space to match your team's needs. Adjust space settings for branding and layout, manage user permissions for secure access, and use import/export options to migrate content efficiently. Follow these guides to set up your space quickly.
+
+<Columns cols={3}>
+  <Card title="Space Settings" icon="settings" href="#space-settings">
+    Configure branding, themes, and default layouts.
+  </Card>
+  <Card title="User Permissions" icon="users" href="#user-permissions">
+    Control who can edit, view, or administer content.
+  </Card>
+  <Card title="Import/Export" icon="upload" href="#import-export">
+    Back up or transfer your documentation.
+  </Card>
+</Columns>
+
+## Space Settings
+
+Tailor your space's appearance and behavior through the settings panel. Access it from the admin dashboard.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to **Space Settings** in the sidebar.
+  </Step>
+  <Step title="Update Branding" icon="palette">
+    Enter your brand color, such as `#3B82F6`, and upload a logo.
+  </Step>
+  <Step title="Set Defaults" icon="layout">
+    Choose default page templates and sidebar navigation.
+  </Step>
+  <Step title="Save Changes" icon="check-circle">
+    Preview and apply settings across your space.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Enable dark mode support in space settings for better user experience on modern devices.
+</Callout>
+
+## User Permissions
+
+Define roles to ensure secure collaboration. Use the permissions interface to assign granular access.
+
+<Tabs>
+  <Tab title="Admin" icon="shield">
+    Admins manage all settings and users.
+
+    | Permission | Description |
+    |------------|-------------|
+    | Edit All | Modify any page |
+    | Manage Users | Add/remove members |
+    | Delete Content | Remove pages and spaces |
+  </Tab>
+  <Tab title="Editor" icon="edit-3">
+    Editors contribute content without admin access.
+
+    | Permission | Description |
+    |------------|-------------|
+    | Edit Owned | Update personal pages |
+    | View All | Read entire space |
+    | Publish | Deploy changes |
+  </Tab>
+  <Tab title="Viewer" icon="eye">
+    Viewers access content read-only.
+
+    | Permission | Description |
+    |------------|-------------|
+    | Read Only | View pages |
+    | No Edit | Cannot modify |
+  </Tab>
+</Tabs>
+
+## Import and Export Options
+
+Transfer content using built-in tools or API endpoints. Export creates backups, while import populates new spaces.
+
+<Expandable title="API Configuration Example" default-open="false">
+
+Configure exports via the API with realistic payloads.
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  const response = await fetch('https://api.esen-docs.com/v1/spaces/export', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer YOUR_API_TOKEN' },
+    body: JSON.stringify({
+      spaceId: 'space-123abc',
+      format: 'mdx'
+    })
+  });
+  const data = await response.json();
+  console.log(data.exportUrl);
+  ```
+  ```python
+  import requests
+
+  response = requests.post(
+      'https://api.esen-docs.com/v1/spaces/export',
+      headers={'Authorization': 'Bearer YOUR_API_TOKEN'},
+      json={
+          'spaceId': 'space-123abc',
+          'format': 'mdx'
+      }
+  )
+  data = response.json()
+  print(data['exportUrl'])
+  ```
+</CodeGroup>
+
+</Expandable>
+
+<Callout kind="alert">
+  Always use `YOUR_API_TOKEN` placeholders in shared configs. Replace with secure tokens from your Esen dashboard.
+</Callout>
+
+For bulk operations, schedule regular exports in space settings. This keeps your documentation synchronized across teams and environments.

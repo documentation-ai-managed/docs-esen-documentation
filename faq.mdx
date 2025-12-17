@@ -1,0 +1,127 @@
+---
+title: Frequently Asked Questions
+description: Common questions and answers about using Esen for documentation management.
+---
+
+## Overview
+
+Esen provides a centralized space to organize your project documentation. You can manage pages, collaborate with teams, and publish updates seamlessly. Review these common questions grouped by topic to get started quickly.
+
+<Columns cols={3}>
+  <Card title="Account Management" icon="user" href="#account-management">
+    Create and manage your Esen account details.
+  </Card>
+  <Card title="Troubleshooting Access" icon="shield" href="#troubleshooting">
+    Resolve login and permission issues.
+  </Card>
+  <Card title="Best Practices" icon="book-open" href="#best-practices">
+    Optimize your documentation workflow.
+  </Card>
+</Columns>
+
+## Account Management
+
+<ExpandableGroup>
+  <Expandable title="How do I create an Esen account?" default-open="true">
+
+  Visit `https://esen-docs.com/signup` and provide your email, name, and password. Verify your email to activate the account. You gain immediate access to your default documentation space.
+
+  </Expandable>
+
+  <Expandable title="What if I forget my password?">
+
+  Click "Forgot Password" on the login page. Enter your email, and follow the reset link sent to your inbox. Reset links expire after `{24}` hours for security.
+
+  </Expandable>
+
+  <Expandable title="Can I use single sign-on (SSO)?">
+
+  Enterprise plans support SSO via SAML or OAuth. Contact support at `support@esen-docs.com` to enable it for your organization.
+
+  </Expandable>
+</ExpandableGroup>
+
+## Troubleshooting Access
+
+<Callout kind="tip">
+  Start with basic checks before advanced steps. Clear your browser cache if issues persist.
+</Callout>
+
+<Tabs>
+  <Tab title="Login Issues" icon="log-in">
+    Follow these steps to resolve common login problems:
+
+    <Steps>
+      <Step title="Check Credentials" icon="check-circle">
+        Verify your email and password. Test with an incognito window.
+      </Step>
+      <Step title="Clear Cache" icon="trash-2">
+        ```bash
+        # Browser-specific commands
+        # Chrome: Ctrl+Shift+Delete
+        # Firefox: Ctrl+Shift+Del
+        ```
+      </Step>
+      <Step title="Contact Support">
+        Submit a ticket with your browser version and error screenshot.
+      </Step>
+    </Steps>
+  </Tab>
+  <Tab title="Permission Errors" icon="alert-triangle">
+    You might see `{403 Forbidden}` errors. Ensure your role allows the action.
+
+    <ParamField path="docs/:id" param-type="string" required="true">
+      Document ID you are trying to access.
+    </ParamField>
+
+    <ParamField header="Authorization" param-type="string" required="true">
+      Bearer `{YOUR_API_TOKEN}`.
+    </ParamField>
+  </Tab>
+</Tabs>
+
+## Best Practices
+
+Follow these guidelines to maintain high-quality documentation in Esen.
+
+<Callout kind="success" default-open="true">
+  Use version control integration for collaborative editing.
+</Callout>
+
+### Organize Content Effectively
+
+- Group pages into spaces for different projects.
+- Use frontmatter for metadata like `title` and `description`.
+
+### Integrate with Your Workflow
+
+<CodeGroup tabs="npm,yarn">
+  ```bash
+  npm install esen-docs-sdk
+  ```
+  ```bash
+  yarn add esen-docs-sdk
+  ```
+</CodeGroup>
+
+```javascript
+// Example: Publish a doc programmatically
+import { EsenClient } from 'esen-docs-sdk';
+
+const client = new EsenClient({ apiKey: 'YOUR_API_KEY' });
+await client.docs.publish({ spaceId: 'proj-123', content: markdown });
+```
+
+### Advanced Tips
+
+<Expandable title="How to migrate from other platforms?">
+  Export Markdown from your current tool, then bulk import via Esen's API.
+
+  ```bash
+  curl -X POST https://api.esen-docs.com/v1/import \
+    -H "Authorization: Bearer YOUR_TOKEN" \
+    -F "file=@docs.zip"
+  ```
+</Expandable>
+
+For more, explore the [Quickstart](/docs/quickstart). Your feedback helps improve Esen—share via the feedback button.

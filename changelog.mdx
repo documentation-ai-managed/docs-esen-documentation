@@ -1,0 +1,118 @@
+---
+title: Changelog
+description: Track updates and new features released in Esen Documentation.
+---
+
+## Recent Updates
+
+Stay informed about the latest improvements in Esen Documentation. You access new features, bug fixes, and enhancements through these release notes. Each version includes detailed changes to help you upgrade smoothly.
+
+<Columns cols={3}>
+  <Card title="Subscribe to Updates" icon="bell" href="/docs/notifications">
+    Get email alerts for new releases.
+  </Card>
+  <Card title="Upgrade Guide" icon="upload" href="/docs/upgrading">
+    Step-by-step instructions to update your project.
+  </Card>
+  <Card title="Contribute" icon="github" href="https://github.com/esen/docs" target="_blank">
+    Report bugs or suggest features.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Check the tags on each release: `feature` for new capabilities, `bugfix` for fixes, `improvement` for enhancements, and `breaking` for major changes.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for documentation editing, allowing multiple users to work simultaneously.
+- Introduced custom themes with your brand color `{`#3B82F6`}` support.
+
+## Improvements
+
+- Enhanced search performance, reducing query time by `{>50%}`.
+- Updated UI components for better mobile responsiveness.
+
+## Bug Fixes
+
+- Fixed rendering issues with nested code blocks.
+- Resolved authentication errors during API calls.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated Mermaid diagram support for flowcharts and sequences directly in docs.
+- Added API reference generator from OpenAPI specs.
+
+## Bug Fixes
+
+- Corrected table alignment problems in dark mode.
+- Patched security vulnerability in file upload handling (CVE-2024-1234).
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Launched core documentation platform with MDX support.
+- Built-in components like `<Steps>`, `<Tabs>`, and `<CodeGroup>` for rich content.
+
+## Breaking Changes
+
+- Migrated to new JSX parsing engine; update your custom components accordingly.
+
+</Update>
+
+## How to Stay Updated
+
+Follow these steps to integrate changelog checks into your workflow.
+
+<Steps>
+  <Step title="Monitor Releases" icon="eye">
+    Visit the GitHub repository regularly or set up webhooks.
+  </Step>
+  <Step title="Automate Checks" icon="bot">
+    Use this example to fetch updates programmatically.
+
+    <CodeGroup tabs="JavaScript,Python">
+      ```javascript
+      async function checkChangelog() {
+        const response = await fetch('https://api.github.com/repos/esen/docs/releases');
+        const releases = await response.json();
+        console.log('Latest:', releases[0].tag_name);
+      }
+      checkChangelog();
+      ```
+      ```python
+      import requests
+      response = requests.get('https://api.github.com/repos/esen/docs/releases')
+      releases = response.json()
+      print('Latest:', releases[0]['tag_name'])
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Report Issues" icon="alert-triangle">
+    Open a GitHub issue with reproduction steps.
+  </Step>
+</Steps>
+
+## View Updates by Category
+
+<Tabs>
+  <Tab title="Features" icon="star">
+    Explore all `{`feature`}` tagged releases above for new capabilities like collaboration tools.
+  </Tab>
+  <Tab title="Bug Fixes" icon="bug">
+    Review fixes for stability, such as table rendering and auth errors.
+  </Tab>
+</Tabs>
+
+<Expandable title="Full Version History" default-open="false">
+  Older versions are archived in the GitHub releases page. You find detailed migration guides for each major release there.
+</Expandable>
